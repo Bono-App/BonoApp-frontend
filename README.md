@@ -1,4 +1,13 @@
-# bonoapp-frontend
+# Frontend BonoApp 💵
+
+## Description
+This repository contains the frontend for the bonoapp project
+
+## Group-4 👨‍💻
+* William’s Romero Moran - U201816224
+* Julio Alexander Salazar Zapata - U202017572
+* Yordy Rolando Mochcco Atauje - U201923959
+* Rocman Rody Velásquez Acosta - U20201b553
 
 ## Project setup
 ```
@@ -8,16 +17,6 @@ npm install
 ### Compiles and hot-reloads for development
 ```
 npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
 ```
 
 ### Customize configuration
