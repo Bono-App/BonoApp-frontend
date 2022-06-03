@@ -24,3 +24,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Documentation
 * version 1.0.0 - 03/06/2022
+* version 1.0.1 - 03/06/2022
