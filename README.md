@@ -3,7 +3,7 @@
 ## Description
 This repository contains the frontend for the bonoapp project
 
-## Group-4 👨‍💻
+## Team members 👨‍💻
 * William’s Romero Moran - U201816224
 * Julio Alexander Salazar Zapata - U202017572
 * Yordy Rolando Mochcco Atauje - U201923959
@@ -21,3 +21,6 @@ npm run serve
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Documentation
+* version 1.0.0 - 03/06/2022
