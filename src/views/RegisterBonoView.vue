@@ -1,26 +1,30 @@
 <template>
   <div class="registerbono">
-    <v-card class="pa-8 mx-auto" max-width="500">
-      <v-card-title class="font-weight-bold pt-0">Create a Bills</v-card-title>
-      <v-form ref="form" v-model="valid" lazy-validation>
-        <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="valorNominal"        label="Valor Nominal"      ></v-text-field>
-        <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="vc"                  label="Valor Comercial" ></v-text-field>
-        <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="fechaInicio"         label="Fecha de inicio"    placeholder="2019-02-03T00:00:00"></v-text-field>
-        <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="anios"               label="Años"    ></v-text-field>
-        <v-select   class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="frecuenciaBonos"     label="Frecuencia del cupón" :items="fb"          ></v-select>
-        <v-combobox   class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="deudor"              label="Deudor" :items="clientes"            ></v-combobox>
-        <v-combobox   class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="tasa"                label="Tasa" :items="tasas"                ></v-combobox>
-        <v-combobox   class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="entidadFinanciera"   label="Entidad Financiera" :items="entidadesFinancieras"   ></v-combobox>
-        <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="lugarGiro"           label="Lugar de giro"      ></v-text-field>
-        <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="pagoTextual"         label="Pago textual"       ></v-text-field>
-        <v-divider class="mt-5 mb-3"></v-divider>
-        <v-card-actions>
-          <v-btn outlined color="red" @click="reset">Cancel</v-btn>
-          <v-spacer></v-spacer>
-          <v-btn outlined color="indigo accent-4" :disabled="!valid" @click="createNewBills">Submit</v-btn>
-        </v-card-actions>
-      </v-form>
-    </v-card>
+    <v-hover>
+      <template v-slot:default="{ hover }">
+        <v-card class="pa-8 mx-auto transition-swing" :class="`elevation-${hover ? 20 : 3}`" max-width="500">
+          <h3 class="font-weight-bold pt-0 mb-4">Register Bono</h3>
+          <v-form ref="form" v-model="valid" lazy-validation>
+            <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="valorNominal"        label="Valor Nominal"      ></v-text-field>
+            <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="vc"                  label="Valor Comercial" ></v-text-field>
+            <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="fechaInicio"         label="Fecha de inicio"    placeholder="2019-02-03T00:00:00"></v-text-field>
+            <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="anios"               label="Años"    ></v-text-field>
+            <v-select   class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="frecuenciaBonos"     label="Frecuencia del cupón" :items="fb"          ></v-select>
+            <v-combobox   class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="deudor"              label="Deudor" :items="clientes"            ></v-combobox>
+            <v-combobox   class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="tasa"                label="Tasa" :items="tasas"                ></v-combobox>
+            <v-combobox   class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="entidadFinanciera"   label="Entidad Financiera" :items="entidadesFinancieras"   ></v-combobox>
+            <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="lugarGiro"           label="Lugar de giro"      ></v-text-field>
+            <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="pagoTextual"         label="Pago textual"       ></v-text-field>
+            <v-divider class="mt-5 mb-3"></v-divider>
+            <v-card-actions>
+              <v-btn outlined color="red" @click="reset">Cancel</v-btn>
+              <v-spacer></v-spacer>
+              <v-btn outlined color="indigo accent-4" :disabled="!valid" @click="createNewBills">Submit</v-btn>
+            </v-card-actions>
+          </v-form>
+        </v-card>
+      </template>
+    </v-hover>    
     <v-snackbar v-model="snackbar" color="success" dark>
       Creo letra exitosamente
       <template v-slot:action="{ attrs }">
