@@ -47,7 +47,7 @@
             <v-card-actions>
               <v-btn outlined color="red" @click="reset">Cancel</v-btn>
               <v-spacer></v-spacer>
-              <v-btn outlined color="indigo accent-4" :disabled="!valid" @click="createNewBills">Submit</v-btn>
+              <v-btn outlined color="indigo accent-4" :disabled="!valid" @click="createBono">Submit</v-btn>
             </v-card-actions>
           </v-form>
         </v-card>
@@ -65,6 +65,8 @@
 </template>
 
 <script>
+import RegisterBonoViewService from '@/views/RegisterBonoView.Service'
+
 export default {
     name: 'RegisterBono',
     data: () => ({
@@ -87,10 +89,44 @@ export default {
         tasaInteres: '',
         tasAnualDescuento: '',
         impRenta: '',
+        prima: '',
+        estructuracion: '',
+        colocacion: '',
+        flotacion: '',
+        cavali: '',
+        tipoBono: '',
         picker: null,
         rules: [v => !!v || 'This field is required'],
     }),
     methods: {
+      createBono () {
+        if(this.$refs.form.validate()) {
+            // let idLogged = localStorage.getItem('user');
+          const Bono = {
+            valor_Nominal: this.valorNominal,
+            valor_Comercial: this.valorComercial,
+            n_Anios: this.anios,
+            frecuencia_Cupon: this.frecuenciaBonos,
+            dias_anio: this.diasAnio,
+            tipo_Tasa: this.tipoTasa,
+            capitalizacion: this.capitalizacion,
+            tasa_Interes: this.tasaInteres,
+            tasa_Anual: this.tasAnualDescuento,
+            imp_Renta: this.impRenta,
+            fecha_Emision: this.date,
+          };
+          RegisterBonoViewService.createNewBono(Bono)
+              .then((response) => {
+                console.log("new bono:", response.data);
+              })
+              .catch((e) => {
+                console.log("error:", e);
+                console.log("new bono:", Bono);
+              });
+          this.snackbar = true;
+          this.reset();
+        }
+      },
     reset () {
       this.$refs.form.reset()
     }
