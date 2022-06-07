@@ -1,15 +1,62 @@
 <template>
-  <div class="helloworld">
-    <h3 class="font-weight-bold mb-3 mt-6">
-      What's BonoApp?
-    </h3>
-    <p class="font-weight-regular text-justify">
-      There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.
-      <br><br>
-      All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable.
-      <br><br>
-      The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
-    </p>
+  <div class="helloworld">    
+    <v-card class="mx-auto" elevation="0" max-width="900">
+      <v-timeline :dense="$vuetify.breakpoint.smAndDown">
+            
+        <v-timeline-item icon="mdi-numeric-1" fill-dot  color="green accent-4">
+          <span slot="opposite" class="font-weight-bold"><v-icon class="mr-3">mdi-account-circle</v-icon> Ingresar</span>
+          <v-hover>
+              <template v-slot:default="{ hover }">
+                <v-card class="transition-swing" :class="`elevation-${hover ? 24 : 3}`">
+                  <v-card-title class="text-h5">Ingresar como usuario</v-card-title>
+                  <v-card-text>
+                    Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+                  </v-card-text>
+                </v-card>
+              </template>
+          </v-hover>   
+        </v-timeline-item>
+        <v-timeline-item icon="mdi-numeric-2" fill-dot  color="green accent-4">
+          <span slot="opposite" class="font-weight-bold">Regitrar<v-icon class="ml-3">mdi-cash</v-icon></span>
+          <v-hover>
+              <template v-slot:default="{ hover }">
+                <v-card class="transition-swing" :class="`elevation-${hover ? 24 : 3}`">
+                  <v-card-title class="text-h5">Registrar nuevo Bono</v-card-title>
+                  <v-card-text>
+                    Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+                  </v-card-text>
+                </v-card>
+              </template>
+          </v-hover>   
+        </v-timeline-item>
+        <v-timeline-item icon="mdi-numeric-3" fill-dot  color="green accent-4">
+          <span slot="opposite" class="font-weight-bold"><v-icon class="mr-3">mdi-calculator-variant</v-icon>Calcular</span>
+          <v-hover>
+              <template v-slot:default="{ hover }">
+                <v-card class="transition-swing" :class="`elevation-${hover ? 24 : 3}`">
+                  <v-card-title class="text-h5">Calcular resultados del Bono</v-card-title>
+                  <v-card-text>
+                    Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+                  </v-card-text>
+                </v-card>
+              </template>
+          </v-hover>   
+        </v-timeline-item>
+        <v-timeline-item icon="mdi-numeric-4" fill-dot  color="green accent-4">
+          <span slot="opposite" class="font-weight-bold">Visualizar<v-icon class="ml-3">mdi-book-open-variant</v-icon></span>
+          <v-hover>
+              <template v-slot:default="{ hover }">
+                <v-card class="transition-swing" :class="`elevation-${hover ? 24 : 3}`">
+                  <v-card-title class="text-h5">Visualizar tabla de datos del Bono</v-card-title>
+                  <v-card-text>
+                    Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+                  </v-card-text>
+                </v-card>
+              </template>
+          </v-hover>   
+        </v-timeline-item>             
+      </v-timeline>  
+    </v-card>
   </div>
 </template>
 
@@ -20,8 +67,4 @@
 </script>
 
 <style>
-.helloworld {
-  margin-left:  35%;
-  margin-right: 35%;
-}
 </style>
