@@ -26,3 +26,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 * version 1.0.0 - 03/06/2022
 * version 1.0.1 - 03/06/2022
 * version 1.0.2 - 07/06/2022
+* version 1.0.3 - 12/06/2022
