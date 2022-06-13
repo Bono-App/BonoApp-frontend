@@ -1,6 +1,6 @@
 <template>
   <div class="helloworld">    
-    <v-card class="mx-auto" elevation="0" max-width="900">
+    <v-card class="mx-auto" elevation="0" max-width="900" color="#F3F5F6">
       <v-timeline :dense="$vuetify.breakpoint.smAndDown">
             
         <v-timeline-item icon="mdi-numeric-1" fill-dot  color="green accent-4">

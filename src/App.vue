@@ -1,11 +1,13 @@
 <template>
   <v-app>
-    <h1 class="mx-auto mt-8">💵 Bono App</h1>
-    <nav class="mx-auto">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/registerbono">Register Bono</router-link>
-    </nav>
+    <h1 class="mx-auto mt-5">💵 Bono App</h1>
+      <v-card class="mx-auto my-3">
+        <v-tabs class="align-center">
+          <v-tab to="/">Home</v-tab>
+          <v-tab to="/about">About</v-tab>
+          <v-tab to="/registerbono">Register Bono</v-tab>
+        </v-tabs>
+      </v-card>    
     <router-view/>
   </v-app>
 </template>
