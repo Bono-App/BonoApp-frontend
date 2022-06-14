@@ -2,27 +2,33 @@
   <div class="bondlist">
     <div class="d-flex flex-wrap justify-center mx-5">
       
-      <v-dialog v-if="dialog" v-model=itemSelect width="720">
+      <v-dialog persistent v-if="dialog" v-model=itemSelect width="500">
         <v-card>
-          <v-card-title class="grey lighten-2 font-weight-bold">
+          <v-card-title>
+            Lorem ipsum
+            <v-spacer></v-spacer>
             {{ itemSelect.id }}
           </v-card-title>
           <v-divider></v-divider>
 
-          <div class="d-flex justify-center align-center py-3">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat tempora cum culpa facere itaque nisi eaque voluptatum, architecto maiores eum! Sed deleniti in est vitae, velit pariatur excepturi aspernatur optio.
-          </div>
+          <v-expansion-panels accordion flat>
+            <v-expansion-panel v-for="(item,i) in 5" :key="i">
+              <v-expansion-panel-header>Item</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
 
+          <v-divider></v-divider>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn text color="red accent-4" class="font-weight-bold" @click="cancelDialog">
-              Cancel
-            </v-btn>
-            <v-btn text color="indigo accent-4" class="font-weight-bold">
-              Completed
-            </v-btn>
+            <v-btn text color="green darken-4" class="font-weight-bold" @click="cancelDialog">
+              Ok
+            </v-btn>            
           </v-card-actions>
         </v-card>
+
       </v-dialog>
 
       <template v-for="bono in fakebonoslist">
