@@ -103,16 +103,16 @@ export default {
         if(this.$refs.form.validate()) {
             // let idLogged = localStorage.getItem('user');
           const Bono = {
-            nominalValue: this.valorNominal,
-            commercialValue: this.valorComercial,
-            numberAnios: this.anios,
-            couponFrecuency: this.frecuenciaBonos,
+            nominalValue: parseFloat(this.valorNominal),
+            commercialValue: parseFloat(this.valorComercial),
+            numberAnios: parseInt(this.anios),
+            couponFrequency: this.frecuenciaBonos,
             dayByAnios: this.diasAnio,
             rateType: this.tipoTasa,
             capitalization: this.capitalizacion,
-            interestRate: this.tasaInteres,
-            discount: this.tasAnualDescuento,
-            incomeTax: this.impRenta,
+            interestRate: parseFloat(this.tasaInteres),
+            discount: parseFloat(this.tasAnualDescuento),
+            incomeTax: parseFloat(this.impRenta),
             broadcastDate: this.date,
             userId: 1,
           };
