@@ -6,6 +6,7 @@
           <v-tab to="/">Home</v-tab>
           <v-tab to="/about">About</v-tab>
           <v-tab to="/registerbono">Register Bono</v-tab>
+          <v-tab to="/bondlist">Bono List</v-tab>
         </v-tabs>
       </v-card>      
     <router-view/>
