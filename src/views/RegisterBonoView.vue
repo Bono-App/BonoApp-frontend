@@ -103,17 +103,18 @@ export default {
         if(this.$refs.form.validate()) {
             // let idLogged = localStorage.getItem('user');
           const Bono = {
-            valor_Nominal: this.valorNominal,
-            valor_Comercial: this.valorComercial,
-            n_Anios: this.anios,
-            frecuencia_Cupon: this.frecuenciaBonos,
-            dias_anio: this.diasAnio,
-            tipo_Tasa: this.tipoTasa,
-            capitalizacion: this.capitalizacion,
-            tasa_Interes: this.tasaInteres,
-            tasa_Anual: this.tasAnualDescuento,
-            imp_Renta: this.impRenta,
-            fecha_Emision: this.date,
+            nominalValue: this.valorNominal,
+            commercialValue: this.valorComercial,
+            numberAnios: this.anios,
+            couponFrecuency: this.frecuenciaBonos,
+            dayByAnios: this.diasAnio,
+            rateType: this.tipoTasa,
+            capitalization: this.capitalizacion,
+            interestRate: this.tasaInteres,
+            discount: this.tasAnualDescuento,
+            incomeTax: this.impRenta,
+            broadcastDate: this.date,
+            userId: 1,
           };
           RegisterBonoViewService.createNewBono(Bono)
               .then((response) => {
