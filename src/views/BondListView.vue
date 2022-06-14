@@ -1,6 +1,30 @@
 <template>
   <div class="bondlist">
     <div class="d-flex flex-wrap justify-center mx-5">
+      
+      <v-dialog v-if="dialog" v-model=itemSelect width="720">
+        <v-card>
+          <v-card-title class="grey lighten-2 font-weight-bold">
+            {{ itemSelect.id }}
+          </v-card-title>
+          <v-divider></v-divider>
+
+          <div class="d-flex justify-center align-center py-3">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quaerat tempora cum culpa facere itaque nisi eaque voluptatum, architecto maiores eum! Sed deleniti in est vitae, velit pariatur excepturi aspernatur optio.
+          </div>
+
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn text color="red accent-4" class="font-weight-bold" @click="cancelDialog">
+              Cancel
+            </v-btn>
+            <v-btn text color="indigo accent-4" class="font-weight-bold">
+              Completed
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+
       <template v-for="bono in fakebonoslist">
         <div :key="bono.id">
           <v-hover v-slot="{ hover }">
@@ -14,7 +38,7 @@
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae laudantium maxime, id consequatur neque accusantium quia.
               </div>
               <v-card-actions>
-                <v-btn depressed text color="green darken-4" class="font-weight-bold px-2">Learn More</v-btn>
+                <v-btn depressed text color="green darken-4" class="font-weight-bold px-2" @click.stop="openDialog(bono)">Learn More</v-btn>
                 <v-spacer></v-spacer>
                 <v-icon class="mr-1">mdi-cash</v-icon>
               </v-card-actions>
@@ -30,6 +54,7 @@
 export default {
     name: 'BondList',
     data: () => ({
+      dialog: false,
       fakebonoslist: [
         {
           id: 1,
@@ -77,7 +102,16 @@ export default {
           content: 250,
         }
       ],
-    })
+    }),
+    methods: {
+      openDialog(data){
+        this.itemSelect = data,
+        this.dialog=true
+      },
+      cancelDialog(){
+        this.dialog=false
+      }
+    }
 }
 </script>
 
