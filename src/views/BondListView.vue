@@ -5,17 +5,26 @@
       <v-dialog persistent v-if="dialog" v-model=itemSelect width="500">
         <v-card>
           <v-card-title>
-            Lorem ipsum
+            Resultados bono: Lorem ipsum
             <v-spacer></v-spacer>
             {{ itemSelect.id }}
           </v-card-title>
           <v-divider></v-divider>
 
-          <v-expansion-panels accordion flat>
-            <v-expansion-panel v-for="(item,i) in 5" :key="i">
-              <v-expansion-panel-header>Item</v-expansion-panel-header>
+          <v-expansion-panels flat accordion multiple>
+            <v-expansion-panel v-for="(item,i) in sectionResult" :key="i">
+              <v-expansion-panel-header>{{item.name}}</v-expansion-panel-header>
               <v-expansion-panel-content>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <v-simple-table dense dark class="rounded">
+                  <template v-slot:default>                    
+                    <tbody>
+                      <tr v-for="(area,a) in item.areas" :key="a">
+                        <td>{{area}}</td>
+                        <td>{{itemSelect.name}}</td>
+                      </tr>
+                    </tbody>
+                  </template>
+                </v-simple-table>
               </v-expansion-panel-content>
             </v-expansion-panel>
           </v-expansion-panels>
@@ -28,7 +37,6 @@
             </v-btn>            
           </v-card-actions>
         </v-card>
-
       </v-dialog>
 
       <template v-for="bono in fakebonoslist">
@@ -64,50 +72,90 @@ export default {
       fakebonoslist: [
         {
           id: 1,
-          name: 'LoremIpsum',
+          name: 'StarPlus',
           content: 150,
         },
         {
           id: 2,
-          name: 'LoremIpsum',
+          name: 'Halion',
           content: 350,
         },
         {
           id: 3,
-          name: 'LoremIpsum',
+          name: 'MegaLoad',
           content: 250,
         },
         {
           id: 4,
-          name: 'LoremIpsum',
+          name: 'UltraSound',
           content: 250,
         },
         {
           id: 5,
-          name: 'LoremIpsum',
+          name: 'SampleMessage',
           content: 250,
         },
         {
           id: 6,
-          name: 'LoremIpsum',
+          name: 'SiesaKeep',
           content: 250,
         },
         {
           id: 7,
-          name: 'LoremIpsum',
+          name: 'TerminalPlus',
           content: 250,
         },
         {
           id: 8,
-          name: 'LoremIpsum',
+          name: 'NegaSonic',
           content: 250,
         },
         {
           id: 9,
-          name: 'LoremIpsum',
+          name: 'ASRock',
           content: 250,
         }
       ],
+      sectionResult: [
+        {
+          name: "Estructuración del Bono",
+          areas: [
+            "Frecuencia del cupón",
+            "Días capitalización",
+            "N° Períodos pos Año",
+            "N° Total de Períodos por Año",
+            "Tasa efectiva anual",
+            "Tasa efectiva semestral",
+            "COK Semestral",
+            "Cortes Iniciales Emisor",
+            "Cortes Iniciales Bonista",
+            ]
+        },
+        {
+          name: "Precio Actual y Utilidad",
+          areas: [
+            "Precio Actual",
+            "Utilidad / Pérdida"
+          ]
+        },
+        {
+          name: "Ratios de decisión",
+          areas: [
+            "Duración",
+            "Convexidad",
+            "Total",
+            "Duración modificada"
+          ]
+        },
+        {
+          name: "Indicadores de Rentabilidad",
+          areas: [
+            "TCEA Emisor",
+            "TCEA Emisor c/Escudo",
+            "TREA Bonista",
+          ]
+        }
+      ]
     }),
     methods: {
       openDialog(data){
