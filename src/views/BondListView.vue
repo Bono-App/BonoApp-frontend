@@ -5,7 +5,7 @@
       <v-dialog persistent v-if="dialog" v-model=itemSelect width="500">
         <v-card>
           <v-card-title>
-            Resultados bono: Lorem ipsum
+            Resultados bono: {{ itemSelect.name }}
             <v-spacer></v-spacer>
             {{ itemSelect.id }}
           </v-card-title>
