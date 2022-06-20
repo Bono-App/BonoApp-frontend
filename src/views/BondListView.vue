@@ -42,14 +42,21 @@
       <template v-for="bono in fakebonoslist">
         <div :key="bono.id">
           <v-hover v-slot="{ hover }">
-            <v-card :class="{ 'on-hover': hover }" :elevation="hover ? 20 : 3" width="300" class="transition-swing my-3 mx-4">
+            <v-card :class="{ 'on-hover': hover }" :elevation="hover ? 20 : 3" width="330" class="transition-swing my-3 mx-4">
               <v-card-title>
                 {{bono.name}}
                 <v-spacer></v-spacer>
                 {{bono.id}}
               </v-card-title>
               <div class="font-weight-medium px-4 pt-1 pb-2 text-justify">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quae laudantium maxime, id consequatur neque accusantium quia.
+                Selecionar un de los siguientes metodos para calcular los resultados de este bono:
+              </div>
+              <div>
+                <v-chip-group v-model="amenities" mandatory class="py-0 px-4" active-class="green--text text--darken-4">
+                  <v-chip filter outlined>Aleman</v-chip>
+                  <v-chip filter outlined>Americano</v-chip>
+                  <v-chip filter outlined>Frances</v-chip>        
+                </v-chip-group>
               </div>
               <v-card-actions>
                 <v-btn depressed text color="green darken-4" class="font-weight-bold px-2" @click.stop="openDialog(bono)">Learn More</v-btn>
