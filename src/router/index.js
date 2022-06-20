@@ -19,6 +19,11 @@ const routes = [
     path: '/registerbono',
     name: 'registerbono',
     component: () => import('../views/RegisterBonoView.vue')
+  },
+  {
+    path: '/bondlist',
+    name: 'bondlist',
+    component: () => import('../views/BondListView.vue')
   }
 ]
 
