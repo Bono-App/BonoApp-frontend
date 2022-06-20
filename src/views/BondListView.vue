@@ -20,7 +20,7 @@
                     <tbody>
                       <tr v-for="(area,a) in item.areas" :key="a">
                         <td>{{area}}</td>
-                        <td>{{itemSelect.name}}</td>
+                        <td>{{itemSelect.nominalValue}}</td>
                       </tr>
                     </tbody>
                   </template>
@@ -39,12 +39,12 @@
         </v-card>
       </v-dialog>
 
-      <template v-for="bono in fakebonoslist">
+      <template v-for="bono in bonoslist">
         <div :key="bono.id">
           <v-hover v-slot="{ hover }">
             <v-card :class="{ 'on-hover': hover }" :elevation="hover ? 20 : 3" width="330" class="transition-swing my-3 mx-4">
               <v-card-title>
-                {{bono.name}}
+                {{bono.userId}}
                 <v-spacer></v-spacer>
                 {{bono.id}}
               </v-card-title>
@@ -72,57 +72,12 @@
 </template>
 
 <script>
+import BondListViewService from '@/views/BondListView.Service';
 export default {
     name: 'BondList',
     data: () => ({
       dialog: false,
-      fakebonoslist: [
-        {
-          id: 1,
-          name: 'StarPlus',
-          content: 150,
-        },
-        {
-          id: 2,
-          name: 'Halion',
-          content: 350,
-        },
-        {
-          id: 3,
-          name: 'MegaLoad',
-          content: 250,
-        },
-        {
-          id: 4,
-          name: 'UltraSound',
-          content: 250,
-        },
-        {
-          id: 5,
-          name: 'SampleMessage',
-          content: 250,
-        },
-        {
-          id: 6,
-          name: 'SiesaKeep',
-          content: 250,
-        },
-        {
-          id: 7,
-          name: 'TerminalPlus',
-          content: 250,
-        },
-        {
-          id: 8,
-          name: 'NegaSonic',
-          content: 250,
-        },
-        {
-          id: 9,
-          name: 'ASRock',
-          content: 250,
-        }
-      ],
+      bonoslist: [],
       sectionResult: [
         {
           name: "Estructuración del Bono",
@@ -162,16 +117,60 @@ export default {
             "TREA Bonista",
           ]
         }
-      ]
+      ],
+      sampleRpta: null,
     }),
+    created(){
+      BondListViewService.getAllBond()
+      .then((response) => {
+        this.bonoslist = response.data.map(this.getDisplayBond);
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+    },
     methods: {
       openDialog(data){
-        this.itemSelect = data,
-        this.dialog=true
+        this.itemSelect = data;
+        this.GetAmericanBond();
+        this.dialog=true;
       },
       cancelDialog(){
         this.dialog=false
-      }
+      },
+      getDisplayBond(sampleBond){
+        return {
+          id: sampleBond.id,
+          nominalValue: sampleBond.nominalValue,
+          commercialValue: sampleBond.commercialValue,
+          numberAnios: sampleBond.numberAnios,
+          couponFrequency: sampleBond.couponFrequency,
+          dayByAnios: sampleBond.dayByAnios,
+          rateType: sampleBond.rateType,
+          capitalization: sampleBond.capitalization,
+          interestRate: sampleBond.interestRate,
+          discount: sampleBond.discount,
+          incomeTax: sampleBond.incomeTax,
+          broadcastDate: sampleBond.broadcastDate,
+          prima: sampleBond.prima,
+          structure: sampleBond.structure,
+          placement: sampleBond.placement,
+          floatation: sampleBond.floatation,
+          cavali: sampleBond.cavali,
+          userId: sampleBond.userId
+        };
+      },
+      GetAmericanBond(){
+        BondListViewService.getAmericanBond(this.itemSelect.id)
+          .then((response) => {
+            this.sampleRpta = response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });  
+      }    
     }
 }
 </script>
