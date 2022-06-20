@@ -36,9 +36,7 @@
                   <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="estructuracion" type="number"  label="%Estructuración"></v-text-field>
                   <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="colocacion"     type="number"  label="%Colocación"></v-text-field>
                   <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="flotacion"      type="number"  label="%Flotación"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="cavali"         type="number"  label="%CAVALI"></v-text-field>
-                  <h3 class="font-weight-bold pt-0 mb-4 mt-5">Metodo de Bono VAC</h3>
-                  <v-select     class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="tipoBono"       label="Tipo de Bono" :items="lsTipoBono"            ></v-select>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="cavali"         type="number"  label="%CAVALI"></v-text-field>                  
 
                   <!-- <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="fechaEmision"         label="Fecha de emision"    placeholder="2019-02-03T00:00:00"></v-text-field> -->
                 </v-col>
@@ -114,6 +112,11 @@ export default {
             discount: parseFloat(this.tasAnualDescuento),
             incomeTax: parseFloat(this.impRenta),
             broadcastDate: this.date,
+            prima: parseFloat(this.prima),
+            structure: parseFloat(this.estructuracion),
+            placement: parseFloat(this.colocacion),
+            floatation: parseFloat(this.flotacion),
+            cavali: parseFloat(this.cavali),            
             userId: 1,
           };
           RegisterBonoViewService.createNewBono(Bono)
