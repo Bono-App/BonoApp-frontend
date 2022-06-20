@@ -1,12 +1,12 @@
 <template>
   <div class="login">    
     <div class="d-flex align-center mx-auto" id="sample">
-      <div class="d-flex justify-center sample2">
-        <v-hover>
+      <div class="d-flex  justify-center sample2">
+        <div class="d-flex flex-column">
+          <v-hover>
             <template v-slot:default="{ hover }">
-              <v-card width="300" :class="`elevation-${hover ? 24 : 3}`" class="transition-swing">
+              <v-card width="320" :class="`elevation-${hover ? 24 : 3}`" class="transition-swing">
                 <v-card-title class="justify-center font-weight-black mb-1 pb-2" id="title-login">Log In</v-card-title>
-
                 <v-card-text class="py-4">
                   <v-form ref="form" lazy-validation>
                     <v-text-field
@@ -48,26 +48,37 @@
                     </v-text-field>
                   </v-form>
                 </v-card-text>
-
                 <v-divider></v-divider>
-
                 <v-card-actions>
                   <v-btn color="error"
-                         class="font-weight-bold"
-                         text @click="reset">
+                        class="font-weight-bold"
+                        text @click="reset">
                     Reset Form
                   </v-btn>
                   <v-spacer></v-spacer>
                   <v-btn
-                         class="font-weight-bold"
-                         color="indigo accent-4"
-                         text @click="submit">
+                        class="font-weight-bold"
+                        color="indigo accent-4"
+                        text @click="submit">
                     Submit
                   </v-btn>
                 </v-card-actions>
               </v-card>
             </template>
           </v-hover>
+          <v-hover>
+            <template v-slot:default="{ hover }">
+              <v-card width="320" :class="`elevation-${hover ? 24 : 3}`" class="transition-swing mt-3">
+                <v-card-actions class="pl-5">
+                  Register new user
+                  <v-spacer></v-spacer>
+                  <v-btn text class="font-weight-bold"
+                      color="indigo accent-4" to="/signin">Sign in</v-btn>
+                </v-card-actions>
+              </v-card>
+            </template>
+          </v-hover>
+        </div>
       </div>
       <div class="d-flex align-center justify-center sample3">
         <h1 class="title-app my-0">Bono App</h1>
