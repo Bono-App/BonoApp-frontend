@@ -68,7 +68,7 @@ import RegisterBonoViewService from '@/views/RegisterBonoView.Service'
 export default {
     name: 'RegisterBono',
     data: () => ({
-        lsDiasAnio: [365, 350],
+        lsDiasAnio: [365, 360],
         lsCapitalizacion: ['Diaria', 'Quincenal', 'Mensual', 'Bimenstral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
         lsFrecuenciaCupon: ['Mensual', 'Bimestral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
         lsTipoBono: ['Americano', 'Alemán', 'Frances'],

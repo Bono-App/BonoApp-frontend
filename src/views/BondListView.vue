@@ -1,34 +1,88 @@
 <template>
   <div class="bondlist">
+    <v-card class="px-1 mx-auto" width="338" elevation="0">
+      <v-chip-group v-model="amenities" mandatory class="py-0 px-4" active-class="green--text text--darken-4">
+        <v-chip filter outlined>Aleman</v-chip>
+        <v-chip filter outlined>Americano</v-chip>
+        <v-chip filter outlined>Frances</v-chip>        
+      </v-chip-group>
+    </v-card>
+
     <div class="d-flex flex-wrap justify-center mx-5">
-      
+
       <v-dialog persistent v-if="dialog" v-model=itemSelect width="500">
         <v-card>
           <v-card-title>
-            Resultados bono: {{ itemSelect.name }}
+            Resultados bono: {{ itemSelect.id }}
             <v-spacer></v-spacer>
             {{ itemSelect.id }}
           </v-card-title>
           <v-divider></v-divider>
 
           <v-expansion-panels flat accordion multiple>
-            <v-expansion-panel v-for="(item,i) in sectionResult" :key="i">
-              <v-expansion-panel-header>{{item.name}}</v-expansion-panel-header>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Estructuración del Bono</v-expansion-panel-header>
               <v-expansion-panel-content>
                 <v-simple-table dense dark class="rounded">
                   <template v-slot:default>                    
                     <tbody>
-                      <tr v-for="(area,a) in item.areas" :key="a">
-                        <td>{{area}}</td>
-                        <td>{{itemSelect.nominalValue}}</td>
-                      </tr>
+                      <tr><td>Frecuencia del cupón         </td><td>{{sampleRpta.couponFrequency}}</td></tr>
+                      <tr><td>Días capitalización          </td><td>{{sampleRpta.dayCapitalization}}</td></tr>
+                      <tr><td>N° Períodos pos Año          </td><td>{{sampleRpta.periodsPerYear}}</td></tr>
+                      <tr><td>N° Total de Períodos por Año </td><td>{{sampleRpta.totalPeriods}}</td></tr>
+                      <tr><td>Tasa efectiva anual          </td><td>{{sampleRpta.tea}}</td></tr>
+                      <tr><td>Tasa efectiva periodo        </td><td>{{sampleRpta.tep}}</td></tr>
+                      <tr><td>COK periodo                  </td><td>{{sampleRpta.cok}}</td></tr>
+                      <tr><td>Cortes Iniciales Emisor      </td><td>{{sampleRpta.costTransmisor}}</td></tr>
+                      <tr><td>Cortes Iniciales Bonista     </td><td>{{sampleRpta.costBondHolder}}</td></tr>
                     </tbody>
                   </template>
                 </v-simple-table>
               </v-expansion-panel-content>
             </v-expansion-panel>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Precio Actual y Utilidad</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-simple-table dense dark class="rounded">
+                  <template v-slot:default>                    
+                    <tbody>
+                      <tr><td>Precio Actual       </td><td>{{sampleRpta.van}}</td></tr>
+                      <tr><td>Utilidad / Pérdida  </td><td>{{sampleRpta.utilityOrLose}}</td></tr>                      
+                    </tbody>
+                  </template>
+                </v-simple-table>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Ratios de decisión</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-simple-table dense dark class="rounded">
+                  <template v-slot:default>                    
+                    <tbody>
+                      <tr><td>Duración             </td><td>{{sampleRpta.duration}}</td></tr>
+                      <tr><td>Convexidad           </td><td>{{sampleRpta.convexity}}</td></tr>                      
+                      <tr><td>Total                </td><td>{{sampleRpta.total}}</td></tr>                      
+                      <tr><td>Duración modificada  </td><td>{{sampleRpta.modifiedDuration}}</td></tr>                      
+                    </tbody>
+                  </template>
+                </v-simple-table>
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+            <v-expansion-panel>
+              <v-expansion-panel-header>Indicadores de Rentabilidad</v-expansion-panel-header>
+              <v-expansion-panel-content>
+                <v-simple-table dense dark class="rounded">
+                  <template v-slot:default>                    
+                    <tbody>
+                      <tr><td>TCEA Emisor             </td><td>--</td></tr>
+                      <tr><td>TCEA Emisor c/Escudo    </td><td>--</td></tr>                      
+                      <tr><td>TREA Bonista            </td><td>--</td></tr>                      
+                    </tbody>
+                  </template>
+                </v-simple-table>
+              </v-expansion-panel-content>
+            </v-expansion-panel>           
           </v-expansion-panels>
-
           <v-divider></v-divider>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -42,26 +96,20 @@
       <template v-for="bono in bonoslist">
         <div :key="bono.id">
           <v-hover v-slot="{ hover }">
-            <v-card :class="{ 'on-hover': hover }" :elevation="hover ? 20 : 3" width="330" class="transition-swing my-3 mx-4">
+            <v-card :class="{ 'on-hover': hover }" :elevation="hover ? 20 : 3" width="300" class="transition-swing my-3 mx-4">
               <v-card-title>
-                {{bono.userId}}
+                Bono » {{bono.id}}
                 <v-spacer></v-spacer>
-                {{bono.id}}
+                <v-icon class="mr-1">mdi-cash</v-icon>                
               </v-card-title>
-              <div class="font-weight-medium px-4 pt-1 pb-2 text-justify">
-                Selecionar un de los siguientes metodos para calcular los resultados de este bono:
-              </div>
-              <div>
-                <v-chip-group v-model="amenities" mandatory class="py-0 px-4" active-class="green--text text--darken-4">
-                  <v-chip filter outlined>Aleman</v-chip>
-                  <v-chip filter outlined>Americano</v-chip>
-                  <v-chip filter outlined>Frances</v-chip>        
-                </v-chip-group>
-              </div>
+              <div class="font-weight-medium px-4 pt-8 pb-2 text-justify">
+                Fecha de emisión: {{((bono.broadcastDate).toString()).substr(0,10)}} <br>
+                Emitido por usuario: {{bono.userId}}
+              </div>              
               <v-card-actions>
                 <v-btn depressed text color="green darken-4" class="font-weight-bold px-2" @click.stop="openDialog(bono)">Learn More</v-btn>
                 <v-spacer></v-spacer>
-                <v-icon class="mr-1">mdi-cash</v-icon>
+                <span class="mr-4">BN00{{bono.id}}</span>
               </v-card-actions>
             </v-card>
           </v-hover>
@@ -77,6 +125,7 @@ export default {
     name: 'BondList',
     data: () => ({
       dialog: false,
+      amenities: null,
       bonoslist: [],
       sectionResult: [
         {
@@ -87,8 +136,8 @@ export default {
             "N° Períodos pos Año",
             "N° Total de Períodos por Año",
             "Tasa efectiva anual",
-            "Tasa efectiva semestral",
-            "COK Semestral",
+            "Tasa efectiva periodo",
+            "COK periodo",
             "Cortes Iniciales Emisor",
             "Cortes Iniciales Bonista",
             ]
