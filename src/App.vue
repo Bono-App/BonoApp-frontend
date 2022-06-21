@@ -6,6 +6,7 @@
         <v-tab to="/home">Home</v-tab>
         <v-tab to="/about">About</v-tab>
         <v-tab to="/registerbono">Register Bono</v-tab>
+        <v-tab to="/bondlist">Bond List</v-tab>
         <v-tab @click="logOut">Log out</v-tab>
       </v-tabs>
     </v-card>      
