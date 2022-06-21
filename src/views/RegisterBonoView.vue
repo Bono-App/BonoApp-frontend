@@ -68,6 +68,7 @@ import RegisterBonoViewService from '@/views/RegisterBonoView.Service'
 export default {
     name: 'RegisterBono',
     data: () => ({
+        sampleUser: null,
         lsDiasAnio: [365, 360],
         lsCapitalizacion: ['Diaria', 'Quincenal', 'Mensual', 'Bimenstral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
         lsFrecuenciaCupon: ['Mensual', 'Bimestral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
@@ -96,10 +97,14 @@ export default {
         picker: null,
         rules: [v => !!v || 'This field is required'],
     }),
+    mounted () {
+      this.sampleEx();
+    },
     methods: {
       createBono () {
         if(this.$refs.form.validate()) {
-            // let idLogged = localStorage.getItem('user');
+          let idLogged = localStorage.getItem('user');
+          console.log("user", idLogged);
           const Bono = {
             nominalValue: parseFloat(this.valorNominal),
             commercialValue: parseFloat(this.valorComercial),
@@ -117,23 +122,28 @@ export default {
             placement: parseFloat(this.colocacion),
             floatation: parseFloat(this.flotacion),
             cavali: parseFloat(this.cavali),            
-            userId: 1,
+            userId: this.sampleUser.id,
           };
           RegisterBonoViewService.createNewBono(Bono)
               .then((response) => {
                 console.log("new bono:", response.data);
               })
               .catch((e) => {
-                console.log("error:", e);
-                console.log("new bono:", Bono);
+                console.log("error", e);
+                console.log("new bono", Bono);
               });
           this.snackbar = true;
           this.reset();
         }
       },
-    reset () {
-      this.$refs.form.reset()
-    }
+      sampleEx (){
+        let de = localStorage.getItem('user');
+        this.sampleUser = JSON.parse(de);
+        console.log("Objeto User",this.sampleUser);
+      },
+      reset () {
+        this.$refs.form.reset()
+      }
   }
 }
 </script>

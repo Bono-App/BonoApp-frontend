@@ -6,7 +6,13 @@ class BondListViewService {
     }
 
     getAmericanBond(id){
-        return http.get(`americanbond/${id}`)
+        return http.get(`bondresult/${id}/american`)
+    }
+    getFrancesBond(id){
+        return http.get(`bondresult/${id}/frances`)
+    }
+    getGermanyBond(id){
+        return http.get(`bondresult/${id}/germany`)
     }
 }
 

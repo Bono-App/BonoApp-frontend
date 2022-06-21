@@ -1,7 +1,8 @@
 <template>
   <div class="bondlist">
-    <v-card class="px-1 mx-auto" width="338" elevation="0">
-      <v-chip-group v-model="amenities" mandatory class="py-0 px-4" active-class="green--text text--darken-4">
+    <v-card class="px-1 mx-auto mb-3" width="401" elevation="0">
+      <v-chip-group v-model="amenities" mandatory class="py-0 mx-3" active-class="green--text text--darken-4">
+        <p class="my-auto mr-3">Metodos:</p>
         <v-chip filter outlined>Aleman</v-chip>
         <v-chip filter outlined>Americano</v-chip>
         <v-chip filter outlined>Frances</v-chip>        
@@ -126,47 +127,7 @@ export default {
     data: () => ({
       dialog: false,
       amenities: null,
-      bonoslist: [],
-      sectionResult: [
-        {
-          name: "Estructuración del Bono",
-          areas: [
-            "Frecuencia del cupón",
-            "Días capitalización",
-            "N° Períodos pos Año",
-            "N° Total de Períodos por Año",
-            "Tasa efectiva anual",
-            "Tasa efectiva periodo",
-            "COK periodo",
-            "Cortes Iniciales Emisor",
-            "Cortes Iniciales Bonista",
-            ]
-        },
-        {
-          name: "Precio Actual y Utilidad",
-          areas: [
-            "Precio Actual",
-            "Utilidad / Pérdida"
-          ]
-        },
-        {
-          name: "Ratios de decisión",
-          areas: [
-            "Duración",
-            "Convexidad",
-            "Total",
-            "Duración modificada"
-          ]
-        },
-        {
-          name: "Indicadores de Rentabilidad",
-          areas: [
-            "TCEA Emisor",
-            "TCEA Emisor c/Escudo",
-            "TREA Bonista",
-          ]
-        }
-      ],
+      bonoslist: [],      
       sampleRpta: null,
     }),
     created(){
@@ -182,7 +143,13 @@ export default {
     methods: {
       openDialog(data){
         this.itemSelect = data;
-        this.GetAmericanBond();
+        if(this.amenities == 0){
+          this.GetGermanyBond();
+        } else if(this.amenities == 1) {
+          this.GetAmericanBond();
+        } else {
+          this.GetFrancesBond();
+        }
         this.dialog=true;
       },
       cancelDialog(){
@@ -219,7 +186,27 @@ export default {
           .catch(e => {
             console.log(e);
           });  
-      }    
+      },
+      GetGermanyBond(){
+        BondListViewService.getGermanyBond(this.itemSelect.id)
+          .then((response) => {
+            this.sampleRpta = response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });  
+      },
+      GetFrancesBond(){
+        BondListViewService.getFrancesBond(this.itemSelect.id)
+          .then((response) => {
+            this.sampleRpta = response.data;
+            console.log(response.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });  
+      }      
     }
 }
 </script>

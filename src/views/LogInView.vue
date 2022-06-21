@@ -170,7 +170,7 @@ export default {
 .sample3 {
   width: 50%;
   height: 100%;
-  background: linear-gradient(45deg, #098a05, #1B5E20);
+  background: linear-gradient(45deg, #0cb106, #123f15);
 }
 .title-app {
   color: white;
