@@ -1,14 +1,48 @@
 <template>
-  <div class="login">    
+  <div class="signin">    
     <div class="d-flex align-center mx-auto" id="sample">
       <div class="d-flex  justify-center sample2">
         <div class="d-flex flex-column">
           <v-hover>
             <template v-slot:default="{ hover }">
               <v-card width="320" :class="`elevation-${hover ? 24 : 3}`" class="transition-swing">
-                <v-card-title class="justify-center font-weight-black mb-1 pb-2" id="title-login">Log In</v-card-title>
+                <v-card-title class="justify-center font-weight-black mb-1 pb-2" id="title-login">Sign In</v-card-title>
                 <v-card-text class="py-4">
                   <v-form ref="form" lazy-validation>
+                    <v-text-field
+                        class="mb-2"
+                        hide-details="auto"
+                        v-model="firstName"
+                        :rules="nameRules"
+                        label="First name"
+                        required outlined dense
+                    >
+                      <template v-slot:append>
+                        <v-tooltip right>
+                          <template v-slot:activator="{ on }">
+                            <v-icon v-on="on">mdi-account-circle-outline</v-icon>
+                          </template>
+                          Write here your first name
+                        </v-tooltip>
+                      </template>
+                    </v-text-field>
+                    <v-text-field
+                        class="mb-2"
+                        hide-details="auto"
+                        v-model="lastName"
+                        :rules="nameRules"
+                        label="Last name"
+                        required outlined dense
+                    >
+                      <template v-slot:append>
+                        <v-tooltip right>
+                          <template v-slot:activator="{ on }">
+                            <v-icon v-on="on">mdi-account-circle-outline</v-icon>
+                          </template>
+                          Write here your last name
+                        </v-tooltip>
+                      </template>
+                    </v-text-field>
                     <v-text-field
                         dense hide-details
                         class="mb-3"
@@ -70,10 +104,10 @@
             <template v-slot:default="{ hover }">
               <v-card width="320" :class="`elevation-${hover ? 24 : 3}`" class="transition-swing mt-3">
                 <v-card-actions class="pl-5">
-                  Register new user
+                  Registered user
                   <v-spacer></v-spacer>
                   <v-btn text class="font-weight-bold"
-                      color="indigo accent-4" to="/signin">Sign in</v-btn>
+                      color="indigo accent-4" to="/login">Log in</v-btn>
                 </v-card-actions>
               </v-card>
             </template>
@@ -84,7 +118,7 @@
         <h1 class="title-app my-0">Bono App</h1>
       </div>
     </div>
-    <v-snackbar v-model="snackbar" color="error" dark>
+    <v-snackbar v-model="snackbar" :color=color dark>
       {{ text }}
       <template v-slot:action="{ attrs }">
         <v-btn text v-bind="attrs" @click="snackbar = false">
@@ -96,22 +130,20 @@
 </template>
 
 <script>
-import LogInViewService from '@/views/LogInView.Service'
-import router from "@/router";
+import SignInViewService from '@/views/SignInView.Service'
 
 export default {
-  name: 'LogIn',
+  name: 'SignIn',
   data: ()=>({
+    firstName: '',
+    color: '',
+    lastName: '',
     snackbar: false,
     text: '',
     email: '',
     password: '',
     found: false,
-    usuario: {
-      id: '',
-      contrasena: '',
-      correo: '',
-    },
+    nameRules: [ v => !!v || 'Name is required'],
     passwordRules: [
       v => !!v || 'Password is required',
     ],
@@ -124,20 +156,24 @@ export default {
     submit () {
       this.$refs.form.validate()
       let val = this.$refs.form.validate();
-      let valPassword = this.password;
       console.log("Valor de formulario: ",val);
 
-      if(val){        
-        LogInViewService.getUsersByEmail(this.email)
+
+
+      if(val){    
+        let user = {
+          name:       this.firstName,
+          lastName:   this.lastName,
+          email:      this.email,
+          password:   this.password,
+        };
+        
+        SignInViewService.createNewUser(user)
             .then(response => {
-              if (response.data.password == valPassword) {
-                localStorage.setItem('user', JSON.stringify(response.data));
-                console.log("User log in: ", response.data);
-                router.push('/home')
-              } else {
-                this.snackbar = true;
-                this.text = 'Wrong username or password';
-              }
+              console.log(response.data);
+              this.color = 'success';
+              this.text = 'User created successfully';
+              this.snackbar = true;
             })
             .catch(e => {
               this.snackbar = true;
@@ -155,7 +191,7 @@ export default {
 </script>
 
 <style>
-.login {
+.signin {
   height: 100%;
 }
 #title-login {
