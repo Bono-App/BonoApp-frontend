@@ -36,9 +36,7 @@
                   <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="estructuracion" type="number"  label="%Estructuración"></v-text-field>
                   <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="colocacion"     type="number"  label="%Colocación"></v-text-field>
                   <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="flotacion"      type="number"  label="%Flotación"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="cavali"         type="number"  label="%CAVALI"></v-text-field>
-                  <h3 class="font-weight-bold pt-0 mb-4 mt-5">Metodo de Bono VAC</h3>
-                  <v-select     class="mb-3" :rules="rules" clearable outlined hide-details dense   v-model="tipoBono"       label="Tipo de Bono" :items="lsTipoBono"            ></v-select>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="cavali"         type="number"  label="%CAVALI"></v-text-field>                  
 
                   <!-- <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="fechaEmision"         label="Fecha de emision"    placeholder="2019-02-03T00:00:00"></v-text-field> -->
                 </v-col>
@@ -70,7 +68,8 @@ import RegisterBonoViewService from '@/views/RegisterBonoView.Service'
 export default {
     name: 'RegisterBono',
     data: () => ({
-        lsDiasAnio: [365, 350],
+        sampleUser: null,
+        lsDiasAnio: [365, 360],
         lsCapitalizacion: ['Diaria', 'Quincenal', 'Mensual', 'Bimenstral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
         lsFrecuenciaCupon: ['Mensual', 'Bimestral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
         lsTipoBono: ['Americano', 'Alemán', 'Frances'],
@@ -98,38 +97,53 @@ export default {
         picker: null,
         rules: [v => !!v || 'This field is required'],
     }),
+    mounted () {
+      this.sampleEx();
+    },
     methods: {
       createBono () {
         if(this.$refs.form.validate()) {
-            // let idLogged = localStorage.getItem('user');
+          let idLogged = localStorage.getItem('user');
+          console.log("user", idLogged);
           const Bono = {
-            valor_Nominal: this.valorNominal,
-            valor_Comercial: this.valorComercial,
-            n_Anios: this.anios,
-            frecuencia_Cupon: this.frecuenciaBonos,
-            dias_anio: this.diasAnio,
-            tipo_Tasa: this.tipoTasa,
-            capitalizacion: this.capitalizacion,
-            tasa_Interes: this.tasaInteres,
-            tasa_Anual: this.tasAnualDescuento,
-            imp_Renta: this.impRenta,
-            fecha_Emision: this.date,
+            nominalValue: parseFloat(this.valorNominal),
+            commercialValue: parseFloat(this.valorComercial),
+            numberAnios: parseInt(this.anios),
+            couponFrequency: this.frecuenciaBonos,
+            dayByAnios: this.diasAnio,
+            rateType: this.tipoTasa,
+            capitalization: this.capitalizacion,
+            interestRate: parseFloat(this.tasaInteres),
+            discount: parseFloat(this.tasAnualDescuento),
+            incomeTax: parseFloat(this.impRenta),
+            broadcastDate: this.date,
+            prima: parseFloat(this.prima),
+            structure: parseFloat(this.estructuracion),
+            placement: parseFloat(this.colocacion),
+            floatation: parseFloat(this.flotacion),
+            cavali: parseFloat(this.cavali),            
+            userId: this.sampleUser.id,
           };
           RegisterBonoViewService.createNewBono(Bono)
               .then((response) => {
                 console.log("new bono:", response.data);
               })
               .catch((e) => {
-                console.log("error:", e);
-                console.log("new bono:", Bono);
+                console.log("error", e);
+                console.log("new bono", Bono);
               });
           this.snackbar = true;
           this.reset();
         }
       },
-    reset () {
-      this.$refs.form.reset()
-    }
+      sampleEx (){
+        let de = localStorage.getItem('user');
+        this.sampleUser = JSON.parse(de);
+        console.log("Objeto User",this.sampleUser);
+      },
+      reset () {
+        this.$refs.form.reset()
+      }
   }
 }
 </script>
