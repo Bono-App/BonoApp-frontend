@@ -9,8 +9,8 @@
               <template v-slot:default="{ hover }">
                 <v-card class="transition-swing" :class="`elevation-${hover ? 24 : 3}`">
                   <v-card-title class="text-h5">Ingresar como usuario</v-card-title>
-                  <v-card-text>
-                    Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+                  <v-card-text class="text-justify">
+                    Registrarte con tu nombre, apellidos, email y contraseña para obtener una cuenta con la cual luego ingresar a la plataforma y crear bonos. 
                   </v-card-text>
                 </v-card>
               </template>
@@ -22,8 +22,8 @@
               <template v-slot:default="{ hover }">
                 <v-card class="transition-swing" :class="`elevation-${hover ? 24 : 3}`">
                   <v-card-title class="text-h5">Registrar nuevo Bono</v-card-title>
-                  <v-card-text>
-                    Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+                  <v-card-text class="text-justify">
+                    Para registrar un nuevo bono debe ingresar todos los campos requeridos para crear el mismo, Valor Nominal, Valor Comercial, Años, Frecuencia del cupón y otros datos.
                   </v-card-text>
                 </v-card>
               </template>
@@ -35,8 +35,8 @@
               <template v-slot:default="{ hover }">
                 <v-card class="transition-swing" :class="`elevation-${hover ? 24 : 3}`">
                   <v-card-title class="text-h5">Calcular resultados del Bono</v-card-title>
-                  <v-card-text>
-                    Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+                  <v-card-text class="text-justify">
+                    Visualizar una lista de los bonos creados por usted, para luego seleccionar el metodo con el cual calcular los datos del bono, ya sea Aleman, Americano o Frances.
                   </v-card-text>
                 </v-card>
               </template>
@@ -48,8 +48,8 @@
               <template v-slot:default="{ hover }">
                 <v-card class="transition-swing" :class="`elevation-${hover ? 24 : 3}`">
                   <v-card-title class="text-h5">Visualizar tabla de datos del Bono</v-card-title>
-                  <v-card-text>
-                    Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at.
+                  <v-card-text class="text-justify">
+                    En cada tarjeta de bono podra seleccionar "Learn More" para visualizar los datos calculados dependiendo del metodo seleccionado anterioremente, divido por Estructuración del Bono, Precio Actual y Utilidad, Ratios de decisión y Inidicadores de Rentabilidad.
                   </v-card-text>
                 </v-card>
               </template>

@@ -75,9 +75,10 @@
                 <v-simple-table dense dark class="rounded">
                   <template v-slot:default>                    
                     <tbody>
-                      <tr><td>TCEA Emisor             </td><td>--</td></tr>
-                      <tr><td>TCEA Emisor c/Escudo    </td><td>--</td></tr>                      
-                      <tr><td>TREA Bonista            </td><td>--</td></tr>                      
+                      <tr><td>TCEA Emisor             </td><td>{{sampleRpta.tceaEmisor}}</td></tr>
+                      <tr><td>TREA Bonista            </td><td>{{sampleRpta.treaBonista}}</td></tr>                      
+                      <tr><td>TIR Bonista periodo     </td><td>{{sampleRpta.tirBonistaPeriod}}</td></tr>                      
+                      <tr><td>TIR Emisor periodo      </td><td>{{sampleRpta.tirEmisorPeriod}}</td></tr>                      
                     </tbody>
                   </template>
                 </v-simple-table>
@@ -143,6 +144,7 @@ export default {
     methods: {
       openDialog(data){
         this.itemSelect = data;
+        console.log("ItemSelect:",this.itemSelect);
         if(this.amenities == 0){
           this.GetGermanyBond();
         } else if(this.amenities == 1) {
