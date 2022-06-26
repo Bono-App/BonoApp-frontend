@@ -71,7 +71,7 @@ export default {
         sampleUser: null,
         lsDiasAnio: [365, 360],
         lsCapitalizacion: ['Diaria', 'Quincenal', 'Mensual', 'Bimenstral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
-        lsFrecuenciaCupon: ['Mensual', 'Bimestral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
+        lsFrecuenciaCupon: ['Diaria','Mensual', 'Bimestral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
         lsTipoBono: ['Americano', 'Alemán', 'Frances'],
         lsTipoTasa: ['Nominal', 'Efectiva'],
         date: null,

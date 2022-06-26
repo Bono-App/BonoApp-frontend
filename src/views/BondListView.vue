@@ -75,10 +75,12 @@
                 <v-simple-table dense dark class="rounded">
                   <template v-slot:default>                    
                     <tbody>
-                      <tr><td>TCEA Emisor             </td><td>{{sampleRpta.tceaEmisor}}</td></tr>
-                      <tr><td>TREA Bonista            </td><td>{{sampleRpta.treaBonista}}</td></tr>                      
-                      <tr><td>TIR Bonista periodo     </td><td>{{sampleRpta.tirBonistaPeriod}}</td></tr>                      
-                      <tr><td>TIR Emisor periodo      </td><td>{{sampleRpta.tirEmisorPeriod}}</td></tr>                      
+                      <tr><td>TCEA Emisor                </td><td>{{sampleRpta.tceaEmisor}}</td></tr>
+                      <tr><td>TREA Bonista               </td><td>{{sampleRpta.treaBonista}}</td></tr>                      
+                      <tr><td>TIR Bonista periodo        </td><td>{{sampleRpta.tirBonistaPeriod}}</td></tr>                      
+                      <tr><td>TIR Emisor periodo         </td><td>{{sampleRpta.tirEmisorPeriod}}</td></tr>                      
+                      <tr><td>TCEA Emisor escudo         </td><td>{{sampleRpta.tceaEmisorEscudo}}</td></tr>                      
+                      <tr><td>TCEA Emisor escudo periodo </td><td>{{sampleRpta.tirEmisorEscudoPeriod}}</td></tr>                      
                     </tbody>
                   </template>
                 </v-simple-table>
