@@ -1,8 +1,10 @@
 import http from '@/core/http-common'
 class BondListViewService {    
-
+    
     getAllBond(){
-        return http.get(`bonds`);
+        let de = localStorage.getItem('user');
+        this.sampleUser = JSON.parse(de);
+        return http.get(`users/${this.sampleUser.id}/bonds`);
     }
 
     getAmericanBond(id){

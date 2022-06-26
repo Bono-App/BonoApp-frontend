@@ -7,16 +7,16 @@
               <v-row>
                 <v-col cols="6">
                   <h3 class="font-weight-bold pt-0 mb-4">Datos del Bono</h3>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="valorNominal"        label="Valor Nominal"           type="number"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="valorComercial"      label="Valor Comercial"         type="number"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="anios"               label="Años"                    type="number"></v-text-field>
-                  <v-select     class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="frecuenciaBonos"     label="Frecuencia del cupón"    :items="lsFrecuenciaCupon"></v-select>
-                  <v-select     class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="diasAnio"            label="Dias por año"            :items="lsDiasAnio"></v-select>
-                  <v-select     class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="tipoTasa"            label="Tipo de tasa de interes" :items="lsTipoTasa"></v-select>
-                  <v-select     class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="capitalizacion"      label="Capitalización"          :items="lsCapitalizacion"></v-select>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="tasaInteres"         label="Tasa de interés"         type="number"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="tasAnualDescuento"   label="Tasa anual de descuento" type="number"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="impRenta"            label="Importe a la Renta"      type="number"></v-text-field>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="valorNominal"        label="Valor Nominal"           type="number"></v-text-field>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="valorComercial"      label="Valor Comercial"         type="number"></v-text-field>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="anios"               label="Años"                    type="number"></v-text-field>
+                  <v-select     class="mb-3" :rules="rules" dense outlined  hide-details  v-model="frecuenciaBonos"     label="Frecuencia del cupón"    :items="lsFrecuenciaCupon"></v-select>
+                  <v-select     class="mb-3" :rules="rules" dense outlined  hide-details  v-model="diasAnio"            label="Dias por año"            :items="lsDiasAnio"></v-select>
+                  <v-select     class="mb-3" :rules="rules" dense outlined  hide-details  v-model="tipoTasa"            label="Tipo de tasa de interes" :items="lsTipoTasa"></v-select>
+                  <v-select     class="mb-3" :rules="rules" dense outlined  hide-details  v-model="capitalizacion"      label="Capitalización"          :items="lsCapitalizacion"></v-select>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="tasaInteres"         label="Tasa de interés"         type="number"></v-text-field>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="tasAnualDescuento"   label="Tasa anual de descuento" type="number"></v-text-field>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="impRenta"            label="Importe a la Renta"      type="number"></v-text-field>
                   
                   <v-menu ref="menu"  v-model="menu"  :close-on-content-click="false" :return-value.sync="date" transition="scale-transition" offset-y  min-width="auto">
                     <template v-slot:activator="{ on, attrs }">
@@ -32,13 +32,13 @@
                 </v-col>
                 <v-col cols="6">
                   <h3 class="font-weight-bold pt-0 mb-4">Datos de Costes/Gastos iniciales</h3>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="prima"          type="number"  label="%Prima"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="estructuracion" type="number"  label="%Estructuración"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="colocacion"     type="number"  label="%Colocación"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="flotacion"      type="number"  label="%Flotación"></v-text-field>
-                  <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="cavali"         type="number"  label="%CAVALI"></v-text-field>                  
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="prima"          type="number"  label="%Prima"></v-text-field>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="estructuracion" type="number"  label="%Estructuración"></v-text-field>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="colocacion"     type="number"  label="%Colocación"></v-text-field>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="flotacion"      type="number"  label="%Flotación"></v-text-field>
+                  <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="cavali"         type="number"  label="%CAVALI"></v-text-field>                  
 
-                  <!-- <v-text-field class="mb-3" :rules="rules" dense outlined  clearable hide-details  v-model="fechaEmision"         label="Fecha de emision"    placeholder="2019-02-03T00:00:00"></v-text-field> -->
+                  <!-- <v-text-field class="mb-3" :rules="rules" dense outlined  hide-details  v-model="fechaEmision"         label="Fecha de emision"    placeholder="2019-02-03T00:00:00"></v-text-field> -->
                 </v-col>
               </v-row>
             <v-divider class="mt-5 mb-3"></v-divider>
@@ -71,7 +71,7 @@ export default {
         sampleUser: null,
         lsDiasAnio: [365, 360],
         lsCapitalizacion: ['Diaria', 'Quincenal', 'Mensual', 'Bimenstral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
-        lsFrecuenciaCupon: ['Mensual', 'Bimestral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
+        lsFrecuenciaCupon: ['Diaria','Mensual', 'Bimestral', 'Trimestral', 'Cuatrimestral', 'Semestral', 'Anual'],
         lsTipoBono: ['Americano', 'Alemán', 'Frances'],
         lsTipoTasa: ['Nominal', 'Efectiva'],
         date: null,
