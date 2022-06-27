@@ -124,6 +124,7 @@
 </template>
 
 <script>
+// Desarrollado por Julio Salazar, Rody Velasquez, William's Moran, Yordy Mochcco
 import BondListViewService from '@/views/BondListView.Service';
 export default {
     name: 'BondList',

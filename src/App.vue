@@ -16,7 +16,7 @@
 
 <script>
 import router from "@/router";
-
+// Desarrollado por Julio Salazar, Rody Velasquez, William's Moran, Yordy Mochcco
 export default {
   data: () => ({
     show: true,

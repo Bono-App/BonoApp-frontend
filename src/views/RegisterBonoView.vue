@@ -64,7 +64,7 @@
 
 <script>
 import RegisterBonoViewService from '@/views/RegisterBonoView.Service'
-
+// Desarrollado por Julio Salazar, Rody Velasquez, William's Moran, Yordy Mochcco
 export default {
     name: 'RegisterBono',
     data: () => ({

@@ -131,7 +131,7 @@
 
 <script>
 import SignInViewService from '@/views/SignInView.Service'
-
+// Desarrollado por Julio Salazar, Rody Velasquez, William's Moran, Yordy Mochcco
 export default {
   name: 'SignIn',
   data: ()=>({
