@@ -1,6 +1,6 @@
 import http from '@/core/http-common'
 class BondListViewService {    
-    
+    // Desarrollado por Julio Salazar, Rody Velasquez, William's Moran, Yordy Mochcco
     getAllBond(){
         let de = localStorage.getItem('user');
         this.sampleUser = JSON.parse(de);

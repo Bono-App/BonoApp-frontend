@@ -98,7 +98,7 @@
 <script>
 import LogInViewService from '@/views/LogInView.Service'
 import router from "@/router";
-
+// Desarrollado por Julio Salazar, Rody Velasquez, William's Moran, Yordy Mochcco
 export default {
   name: 'LogIn',
   data: ()=>({
